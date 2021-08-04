@@ -12,7 +12,8 @@ public class App {
     public static void main( String[] args ) {
 
         readJson();
-        jsonToList(readJson());
+        List<Employee> list = jsonToList(readJson());
+        System.out.println(list);
 
     }
 
@@ -30,7 +31,7 @@ public class App {
         return null;
     }
 
-    public static void jsonToList(String jsonData){
+    public static List<Employee> jsonToList(String jsonData){
         List<Employee> employees = new ArrayList<>();
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
@@ -44,7 +45,7 @@ public class App {
                     jsonObject.get("country").getAsString(),
                     jsonObject.get("age").getAsInt()));
         }
-        System.out.println(employees);
+        return employees;
     }
 
 }
